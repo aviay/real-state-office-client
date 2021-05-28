@@ -1,2 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+// @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1 {
+    text-align: center;
+  }
+
+
+  .break--shorter {
+    margin-bottom: 10px;
+  }
+  
+  .break--short {
+    margin-bottom: 25px;
+  }
+  
+  .break--medium {
+    margin-bottom: 50px;
+  }
+  
+  .break--large {
+    margin-bottom: 100px;
+  }
+  
+  .break--larger {
+    margin-bottom: 150px;
+  }

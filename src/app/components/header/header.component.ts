@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  title = '';
+  isAuthenticated = true;
+  
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  async logout(): Promise<void> {
+    // todo
   }
 
 }

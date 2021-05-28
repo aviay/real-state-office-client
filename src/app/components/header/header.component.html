@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Carousel</a>
@@ -24,4 +24,49 @@
         </div>
       </div>
     </nav>
-  </header>
+  </header> -->
+
+  <mat-toolbar color="primary" class="expanded-toolbar">
+    <span>
+      <!-- <button mat-button routerLink="/">{{title}}</button> -->
+      <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
+    </span>
+
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-button routerLink="/login" *ngIf="!isAuthenticated">
+        <mat-icon>power_settings_new</mat-icon>
+        התחבר
+      </button>
+      <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        התנתק
+      </button>
+      <button mat-button routerLink="/my-assets" *ngIf="isAuthenticated">
+        <mat-icon>gamepad</mat-icon>
+        הנכסים שלי
+      </button>
+    </div>
+
+    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item routerLink="/">
+      <mat-icon>home</mat-icon>
+      בית
+    </button>
+    <button mat-menu-item routerLink="/my-assets" *ngIf="isAuthenticated">
+      <mat-icon>gamepad</mat-icon>
+      הנכסים שלי
+    </button>
+    <button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated">
+      <mat-icon>power_settings_new</mat-icon>
+      התחבר
+    </button>
+    <button mat-menu-item *ngIf="isAuthenticated" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      התנתק
+    </button>
+  </mat-menu>

@@ -1,0 +1,31 @@
+<div class="break--large"></div>
+
+<mat-card dir="rtl">
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h2>התחברות</h2>
+            <mat-error *ngIf="loginInvalid">
+                The username and password were not recognized
+            </mat-error>
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="פלאפון" formControlName="username" required>
+                <mat-error>
+                    אנא הזן מספר פלאפון תקין
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <input matInput type="password" placeholder="סיסמא" formControlName="password" required>
+                <mat-error>
+                    אנא הזן סיסמא תקין
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary">התחבר</button>
+        </form>
+        <div class="break--short"></div>
+        <mat-divider ></mat-divider>
+        <div class="break--medium"></div>
+        <button mat-stroked-button routerLink="/login/forget" >שכחתי סיסמא</button>
+        
+        
+    </mat-card-content>
+</mat-card>
