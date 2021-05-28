@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -11,7 +12,7 @@ export class AuthService {
 
   public isAuthenticated = new BehaviorSubject<boolean>(false);
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private httpClient :HttpClient) {
   }
 
   async checkAuthenticated() {
@@ -19,7 +20,7 @@ export class AuthService {
   }
 
   async login(username: string, password: string): Promise<void> {
-    
+    //this.httpClient.post("",)
   }
 
   async logout(redirect: string): Promise<void> {

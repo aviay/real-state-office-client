@@ -14,6 +14,7 @@ export class AddNewAssetComponent implements OnInit {
   public loginInvalid = false;
   private formSubmitAttempt = false;
   private returnUrl: string;
+  @Output() public cancel = new EventEmitter<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -55,5 +56,4 @@ export class AddNewAssetComponent implements OnInit {
     this.cancel.emit();
   }
 
-  @Output() public cancel = new EventEmitter<void>();
 }

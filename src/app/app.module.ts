@@ -27,6 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AddNewAssetComponent } from './components/my-assets/add-new-asset/add-new-asset.component';
+import { MyEventsComponent } from './components/my-events/my-events.component';
+import { AddNewEventComponent } from './components/my-events/add-new-event/add-new-event.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { AddNewAssetComponent } from './components/my-assets/add-new-asset/add-n
     MainComponent,
     MyAssetsComponent,
     LoginComponent,
-    AddNewAssetComponent
+    AddNewAssetComponent,
+    MyEventsComponent,
+    AddNewEventComponent,
+    HomeComponent
   ],
   imports: [
     HttpClientModule,

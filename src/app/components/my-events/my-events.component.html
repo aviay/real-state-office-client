@@ -1,11 +1,11 @@
-<app-add-new-asset *ngIf="showForm" (cancel)="showForm=false"></app-add-new-asset>
+<app-add-new-event *ngIf="showForm" (cancel)="showForm=false"></app-add-new-event>
 <div class="break--short"></div>
     <div fxLayout fxLayoutAlign="center center">
       <button mat-raised-button color="primary" (click)="openForm()">
-        
-        הוסף נכס חדש
+          
+        הוסף אירוע חדש
         <mat-icon>add</mat-icon>
-      </button>        
+    </button>        
     </div>
     <div class="break--short"></div>
     <mat-divider ></mat-divider>
@@ -22,17 +22,17 @@
 
 <table mat-table [dataSource]="dataSource" matSort matSortStart="desc">
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> שם המוכר </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>תאריך</th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
   <ng-container matColumnDef="dateOfBirth">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of Birth </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>שיחות יוצאות</th>
     <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="address">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> כתובת </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>כמות פגישות בלעדיות</th>
     <td mat-cell *matCellDef="let element"> {{element.address}} </td>
   </ng-container>
 

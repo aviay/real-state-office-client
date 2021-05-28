@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-service.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-add-new-event',
+  templateUrl: './add-new-event.component.html',
+  styleUrls: ['./add-new-event.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class AddNewEventComponent implements OnInit {
 
   form: FormGroup;
   public loginInvalid = false;
   private formSubmitAttempt = false;
   private returnUrl: string;
+  @Output() public cancel = new EventEmitter<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService
   ) {
-   // this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/my-assets';
+    //this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/my-assets';
 
     this.form = this.fb.group({
       username: ['', Validators.required],
@@ -43,8 +44,6 @@ export class LoginComponent implements OnInit {
         const username = this.form.get('username')?.value;
         const password = this.form.get('password')?.value;
         await this.authService.login(username, password);
-        this.router.navigate(["my-assets"]);
-
       } catch (err) {
         this.loginInvalid = true;
       }
@@ -53,8 +52,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  scroll(el: HTMLElement) {
-    el.scrollIntoView();
-}
- 
+  close(){
+    this.cancel.emit();
+  }
+
+
 }
