@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth-service.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-add-new-asset',
+  templateUrl: './add-new-asset.component.html',
+  styleUrls: ['./add-new-asset.component.scss']
 })
-export class LoginComponent implements OnInit {
-
+export class AddNewAssetComponent implements OnInit {
   form: FormGroup;
   public loginInvalid = false;
   private formSubmitAttempt = false;
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService
   ) {
-   // this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/my-assets';
+    //this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/my-assets';
 
     this.form = this.fb.group({
       username: ['', Validators.required],
@@ -50,5 +50,10 @@ export class LoginComponent implements OnInit {
       this.formSubmitAttempt = true;
     }
   }
- 
+
+  close(){
+    this.cancel.emit();
+  }
+
+  @Output() public cancel = new EventEmitter<void>();
 }

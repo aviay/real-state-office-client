@@ -1,48 +1,68 @@
-<div class="table-responsive"> 
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-            <th scope="col">ff</th>
-            <th scope="col">Handfhfhdfhdle</th>
-            <th scope="col">Hafdhfhdfhdndle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
-      </table>
+<app-add-new-asset *ngIf="showForm" (cancel)="showForm=false"></app-add-new-asset>
+<div class="break--short"></div>
+    <div fxLayout fxLayoutAlign="center center">
+      <button mat-raised-button color="primary" (click)="openForm()">הוסף נכס חדש</button>        
+    </div>
+    <div class="break--short"></div>
+    <mat-divider ></mat-divider>
+    <div class="break--short"></div>
+
+<div fxLayout fxLayoutAlign="center center">
+  <mat-form-field fxFlex="40%">
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="חיפוש">
+  </mat-form-field>
 </div>
 
+<div class="table-responsive"> 
 
 
+<table mat-table [dataSource]="dataSource" matSort matSortStart="desc">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> שם המוכר </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dateOfBirth">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of Birth </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> כתובת </th>
+    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="details">
+    <th mat-header-cell *matHeaderCellDef> פרטים </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" (click)="redirectToDetails(element.id)">
+          <mat-icon class="mat-18">reorder</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="update">
+      <th mat-header-cell *matHeaderCellDef> עדכון </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="accent" (click)="redirectToUpdate(element.id)">
+            <mat-icon class="mat-18">system_update</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> מחיקה </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+              <mat-icon class="mat-18">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+
+<mat-paginator [pageSize]="2" [pageSizeOptions]="[2, 4, 6, 10, 20]" >
+</mat-paginator> 

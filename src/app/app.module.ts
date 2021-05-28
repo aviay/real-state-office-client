@@ -23,6 +23,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { AddNewAssetComponent } from './components/my-assets/add-new-asset/add-new-asset.component';
 
 
 @NgModule({
@@ -31,10 +35,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HeaderComponent,
     MainComponent,
     MyAssetsComponent,
-    LoginComponent
+    LoginComponent,
+    AddNewAssetComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
+    MatSortModule,
     AppRoutingModule,
     FlexLayoutModule,
     FormsModule,
@@ -51,7 +58,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

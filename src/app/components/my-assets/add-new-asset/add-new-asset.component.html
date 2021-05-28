@@ -1,0 +1,41 @@
+<div class="ct-c-modal ">
+    <div class="modal__overlay">
+
+        <div class="break--large"></div>
+
+        <mat-card dir="rtl">
+            <mat-card-content>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <h2>הוספת נכס חדש</h2>
+                    <mat-error *ngIf="loginInvalid">
+                        The username and password were not recognized
+                    </mat-error>
+                    <mat-form-field class="full-width-input">
+                        <input matInput placeholder="שם המוכר" formControlName="username" required>
+                        <mat-error>
+                            אנא הזן שם תקין
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input">
+                        <input matInput type="password" placeholder="פלאפון" formControlName="password" required>
+                        <mat-error>
+                            אנא הזן פלאפון תקין
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input">
+                        <input matInput type="password" placeholder="כתובת" formControlName="password" required>
+                        <mat-error>
+                            אנא הזן כתובת תקינה
+                        </mat-error>
+                    </mat-form-field>
+                   
+                    <button mat-raised-button color="primary">שמור</button>
+                </form>
+                <div class="break--short"></div>
+
+                <button mat-stroked-button (click)="close()" >ביטול</button>
+        </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>
